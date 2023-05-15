@@ -10,4 +10,24 @@ public class ProductPage extends BasePage {
     public ProductPage(WebDriver driver) {
         super(driver);
     }
+
+    @FindBy(css = ".product-name .h1")
+    private WebElement productPageTitle;
+
+    @FindBy(id = "attribute92")
+    private WebElement colorSelector;
+
+    @FindBy(id = "attribute180")
+    private WebElement sizeSelector;
+
+    @FindBy(css = "input[type='checkbox']")
+    private WebElement checkBoxButton;
+
+    @FindBy(css = ".add-to-cart-buttons button")
+    private WebElement addToCartButton;
+
+    @FindBy(css = ".add-to-links .link-wishlist")
+    private WebElement addToWishlistButton;
+
+
 }

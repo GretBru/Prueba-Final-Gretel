@@ -11,6 +11,12 @@ public class CreateAccountPage extends BasePage {
         super(driver);
     }
 
+    @FindBy(css = "#header > div > div.skip-links > a.skip-link.skip-account")
+    private WebElement accountButton;
+
+    @FindBy(css = "[title='Register']")
+    private WebElement registerLink;
+
     @FindBy(id = "firstname")
     private WebElement firstname;
 
@@ -31,6 +37,11 @@ public class CreateAccountPage extends BasePage {
 
     @FindBy(css = "#form-validate > div.buttons-set > button")
     private WebElement registerButton;
+
+    @Step("Clic en el botón de Account.")
+    public void ClickAccount() {
+        accountButton.click();
+    }
 
     @Step("Ingresa los datos")
     public void Login(String firstname, String lastname, String email_address, String password, String confirmation) {

@@ -10,4 +10,6 @@ public class ProductSearchPage extends BasePage {
     public ProductSearchPage(WebDriver driver) {
         super(driver);
     }
+
+
 }
