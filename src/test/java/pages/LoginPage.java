@@ -18,12 +18,12 @@ public class LoginPage extends BasePage{
     private WebElement loginButton;
 
     @Step("Ingresa email y contraeña")
-    public void Login(String email, String password) {
+    public void Login (String email, String password) {
         this.email.sendKeys(email);
         this.password.sendKeys(password);
     }
-    @Step("Click en el botón.")
-    public void ClickButton(){
+    @Step("Click en el botón login.")
+    public void clickButton(){
         loginButton.click();
     }
 

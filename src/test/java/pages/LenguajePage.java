@@ -17,12 +17,8 @@ public class LenguajePage extends BasePage{
     private WebElement searchBar;
 
 
-    @Step("Cambio el idioma)
-    public void selectLenguaje(String lenguaje){
-        selectLengButton.click();
-        WebElement selectLenguaje=driver.findElement(By.name(lenguaje));
-        selectLenguaje.click();
+
 
 
     }
-}
+

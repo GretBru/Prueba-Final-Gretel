@@ -1,6 +1,7 @@
 package scripts;
 
 
+import dataProviders.LoginData;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,12 +12,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.CreateAccountPage;
 import pages.LoginPage;
+import dataProviders.LoginData;
 import java.util.concurrent.TimeUnit;
 import java.time.Duration;
 public class LoginTest {
-
     private WebDriver driver;
 
     @BeforeClass
@@ -31,12 +31,12 @@ public class LoginTest {
         String baseUrl = "http://magento-demo.lexiconn.com/";
         driver.get(baseUrl);
     }
-        public void test(String email, String password){
+    @Test (dataProvider = "login", dataProviderClass = LoginData.class)
 
-
-
-
-
+    public void loginTest(String email, String password)  {
+       LoginPage loginPage = new LoginPage(driver);
+       loginPage.Login(email, password);
+       loginPage.clickButton();
 
     }
     @Attachment(type = "image/png")
@@ -59,3 +59,4 @@ public class LoginTest {
     }
 
 }
+
