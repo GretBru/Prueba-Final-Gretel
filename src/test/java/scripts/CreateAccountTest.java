@@ -26,7 +26,7 @@ public class CreateAccountTest {
         driver.get(baseUrl);
     }
 
-    @Parameters({"firstname","lastname","email_address","password", "confirmation"})
+  //  @Parameters({"firstname","lastname","email_address","password", "confirmation"})
 
     @Test (dataProvider = "account", dataProviderClass = CreateAccountData.class)
 

@@ -11,6 +11,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.ProductSearchPage;
 import java.time.Duration;
 
@@ -32,11 +33,14 @@ public class ProductSearchTest {
         String baseUrl = "http://magento-demo.lexiconn.com/";
         driver.get(baseUrl);
     }
-    @Test(dataProvider = "productSearch", dataProviderClass = dataProviders.ProductSearchData.class)
+    @Test(dataProvider = "productSearch", dataProviderClass = ProductSearchData.class)
     public void testSearchProduct(String product) {
 
-        ProductSearchPage productSearchPage = new ProductSearchPage(driver);
-        productSearchPage.searchProduct(product);
+        HomePage homePage= new HomePage(driver);
+
+        ProductSearchPage productSearch = homePage.searchProduct(product);
+        productSearch.searchProduct(product);
+
         //assertEquals(product,);
 
 

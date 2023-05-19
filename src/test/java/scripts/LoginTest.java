@@ -12,6 +12,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.LoginPage;
 import dataProviders.LoginData;
 import java.time.Duration;
@@ -33,11 +34,11 @@ public class LoginTest {
     @Test (dataProvider = "login", dataProviderClass = LoginData.class)
 
     public void loginTest(String email, String password)  {
+        HomePage home= new HomePage(driver);
 
-       LoginPage loginPage = new LoginPage(driver);
-       loginPage.Login(email, password);
-       loginPage.clickButton();
-
+        LoginPage loginPage = home.clickLogInOption();
+        loginPage.login(email,password);
+        loginPage.clickButton();
     }
     @Attachment(type = "image/png")
 

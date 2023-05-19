@@ -1,0 +1,20 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Parametrized test Suite" verbose="1">
+    <test name="Parametrized Test 1">
+        <parameter name="currencyParam" value="USD" />
+        <parameter name="productParam" value="MacBook" />
+        <parameter name="priceParam" value="$602.00" />
+        <classes>
+            <class name="scripts.AddToCartTest"/>
+        </classes>
+    </test>
+
+    <test name="Parametrized Test 2">
+        <parameter name="currencyParam" value="EUR" />
+        <parameter name="productParam" value="iPhone" />
+        <parameter name="priceParam" value="96.66€" />
+        <classes>
+            <class name="scripts.AddToCartTest"/>
+        </classes>
+    </test>
+</suite>

@@ -17,10 +17,11 @@ public class ProductSearchPage extends BasePage {
     @FindBy(css = "button[title='Search']")
     private WebElement searchButton;
 
+
     @Step("Ingresando el producto a buscar")
-    public String searchProduct (String product) {
-        WebElement foundProduct = driver.findElement(By.linkText(product));
+    public ProductPage searchProduct (String product) {
+        WebElement foundProduct = driver.findElement(By.className(product));
         searchButton.click();
-        return foundProduct.getText();
+        return new ProductPage(driver);
     }
 }

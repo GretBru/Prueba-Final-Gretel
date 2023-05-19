@@ -11,5 +11,18 @@ public class CartPage extends BasePage {
     public CartPage(WebDriver driver) {
         super(driver);
     }
+    @FindBy(css = ".page-title h1")
+    private WebElement cartPageTitle;
+    @Step("Get shopping cart page title")
+    public String getCartPageTitle() {
+        return cartPageTitle.getText();
+    }
+    @Step("Get product name")
+    public String getProductName(String productName) {
+        WebElement product = driver.findElement(By.linkText(productName.toUpperCase()));
+        return product.getText();
+    }
+
+
 
 }
