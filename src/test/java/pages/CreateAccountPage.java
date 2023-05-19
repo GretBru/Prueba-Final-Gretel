@@ -15,7 +15,7 @@ public class CreateAccountPage extends BasePage {
     private WebElement accountButton;
 
     @FindBy(css = "[title='Register']")
-    private WebElement registerLink;
+    private WebElement registerButton;
 
     @FindBy(id = "firstname")
     private WebElement firstname;
@@ -36,11 +36,16 @@ public class CreateAccountPage extends BasePage {
     private WebElement is_subscribed;
 
     @FindBy(css = "#form-validate > div.buttons-set > button")
-    private WebElement registerButton;
+    private WebElement registerFinalButton;
 
     @Step("Clic en el botón de Account.")
     public void ClickAccount() {
         accountButton.click();
+    }
+
+    @Step("Clic en el botón de Register para ingresar al registro.")
+    public void clickRegister(){
+        registerButton.click();
     }
 
     @Step("Ingresa los datos")
@@ -57,9 +62,9 @@ public class CreateAccountPage extends BasePage {
         is_subscribed.click();
     }
 
-    @Step("Click en el botón Registrarse.")
-    public void ClickButton(){
-        registerButton.click();
+    @Step("Click en el botón Registrarse para el registro del usuario.")
+    public void registerFinalButton(){
+        registerFinalButton.click();
     }
 
 }

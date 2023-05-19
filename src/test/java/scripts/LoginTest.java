@@ -14,7 +14,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import dataProviders.LoginData;
-import java.util.concurrent.TimeUnit;
 import java.time.Duration;
 public class LoginTest {
     private WebDriver driver;
@@ -34,6 +33,7 @@ public class LoginTest {
     @Test (dataProvider = "login", dataProviderClass = LoginData.class)
 
     public void loginTest(String email, String password)  {
+
        LoginPage loginPage = new LoginPage(driver);
        loginPage.Login(email, password);
        loginPage.clickButton();
