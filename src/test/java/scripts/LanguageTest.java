@@ -1,4 +1,7 @@
 package scripts;
+
+import dataProviders.LanguageData;
+import dataProviders.LoginData;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -6,14 +9,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
-import pages.CreateAccountPage;
-import dataProviders.CreateAccountData;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 import pages.HomePage;
-
 import java.time.Duration;
 
-public class CreateAccountTest {
-
+public class LanguageTest {
     private WebDriver driver;
 
     @BeforeClass
@@ -21,6 +22,7 @@ public class CreateAccountTest {
         System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -28,16 +30,14 @@ public class CreateAccountTest {
         driver.get(baseUrl);
     }
 
-  //  @Parameters({"firstname","lastname","email_address","password", "confirmation"})
 
-    @Test (dataProvider = "account", dataProviderClass = CreateAccountData.class)
+    @Test (dataProvider = "language", dataProviderClass = LanguageData.class)
+    public void languageTest(String language) throws Exception {
 
-    public void createAccountTest(String firstname, String lastname,String email_address, String password, String confirmation) throws Exception {
-        HomePage home= new HomePage(driver);
-        CreateAccountPage createAccountPage = home.clickRegister();
-        createAccountPage.createAccount(firstname,lastname,email_address,password,confirmation);
-        createAccountPage.registerFinalButton();
+        HomePage homePage= new HomePage(driver);
+        homePage.selectLanguage(language);
     }
+
     @Attachment(type = "image/png")
 
     @AfterMethod(alwaysRun = true)
@@ -56,4 +56,5 @@ public class CreateAccountTest {
     public void afterTest(){
         driver.quit();
     }
+
 }

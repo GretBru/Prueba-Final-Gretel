@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.ProductSearchPage;
+import pages.ProductPage;
 import java.time.Duration;
 
 import static org.testng.Assert.assertEquals;
@@ -38,8 +39,8 @@ public class ProductSearchTest {
 
         HomePage homePage= new HomePage(driver);
 
-        ProductSearchPage productSearch = homePage.searchProduct(product);
-        productSearch.searchProduct(product);
+        ProductSearchPage productSearchPage = homePage.searchProduct(product);
+
 
         //assertEquals(product,);
 

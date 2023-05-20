@@ -24,7 +24,6 @@ public class LoginPage extends BasePage{
     }
     @Step("Click en el botón login.")
     public void clickButton(){
-
         loginButton.click();
     }
 

@@ -14,7 +14,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
-import dataProviders.LoginData;
 import java.time.Duration;
 public class LoginTest {
     private WebDriver driver;
@@ -36,7 +35,7 @@ public class LoginTest {
     public void loginTest(String email, String password)  {
         HomePage home= new HomePage(driver);
 
-        LoginPage loginPage = home.clickLogInOption();
+        LoginPage loginPage = home.clickLogIn();
         loginPage.login(email,password);
         loginPage.clickButton();
     }

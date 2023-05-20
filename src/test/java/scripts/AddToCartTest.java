@@ -6,12 +6,13 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-import pages.CartPage;
-import pages.ProductPage;
+import pages.*;
+import dataProviders.ProductData;
 
 import java.time.Duration;
 
@@ -34,7 +35,20 @@ public class AddToCartTest {
         driver.get(baseUrl);
     }
 
+    @Test(dataProvider = "products", dataProviderClass = dataProviders.ProductData.class)
+    public void AddToCartTest(String product) {
 
+        HomePage homePage = new HomePage(driver);
+        HomeAndDecorPage homeAndDecorPage = homePage.selectCategory();
+        BookAndMusicPage bookAndMusicPage = homeAndDecorPage.selectSubCategory();
+        ProductPage productPage = bookAndMusicPage.selectProduct(product);
+        productPage.selectBook();
+        productPage.clickCheckBox();
+        CartPage cartPage = productPage.addToCart();
+        assertEquals(cartPage.getName(product), product);
+
+        takeScreenshot();
+    }
 
     @AfterTest
     public void tearDown() {
@@ -46,7 +60,6 @@ public class AddToCartTest {
             System.out.println("Exception while closing the driver " + e.getMessage());
         }
     }
-
     @Attachment(type = "image/png")
     @AfterMethod(alwaysRun = true)
     public byte[] takeScreenshot() {

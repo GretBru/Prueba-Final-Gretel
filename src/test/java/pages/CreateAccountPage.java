@@ -49,7 +49,7 @@ public class CreateAccountPage extends BasePage {
     }
 
     @Step("Ingresa los datos")
-    public void Login(String firstname, String lastname, String email_address, String password, String confirmation) {
+    public void createAccount (String firstname, String lastname, String email_address, String password, String confirmation) {
         this.firstname.sendKeys(firstname);
         this.lastname.sendKeys(lastname);
         this.email_address.sendKeys(email_address);

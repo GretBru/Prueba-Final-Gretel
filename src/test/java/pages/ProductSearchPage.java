@@ -20,7 +20,7 @@ public class ProductSearchPage extends BasePage {
 
     @Step("Ingresando el producto a buscar")
     public ProductPage searchProduct (String product) {
-        WebElement foundProduct = driver.findElement(By.className(product));
+        WebElement foundProduct = driver.findElement(By.linkText(product));
         searchButton.click();
         return new ProductPage(driver);
     }

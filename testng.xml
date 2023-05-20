@@ -9,12 +9,5 @@
         </classes>
     </test>
 
-    <test name="Parametrized Test 2">
-        <parameter name="currencyParam" value="EUR" />
-        <parameter name="productParam" value="iPhone" />
-        <parameter name="priceParam" value="96.66€" />
-        <classes>
-            <class name="scripts.AddToCartTest"/>
-        </classes>
-    </test>
+
 </suite>
