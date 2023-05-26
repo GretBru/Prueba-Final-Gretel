@@ -6,8 +6,9 @@ public class LanguageData {
     @DataProvider(name = "language")
     public static Object[][] getLanguage() {
         return new Object[][]{
-                {"English"},
-                {"German"},
+                {"default","Site Map"},
+                {"french","Plan du Site"},
+                {"german","Sitemap"}
         };
     }
 }

@@ -21,7 +21,6 @@ public class HomePage extends BasePage{
     private WebElement registerLink;
     @FindBy(id = "search")
     private WebElement searchInput;
-
     @FindBy(css = "#nav > ol > li.level0.nav-4.active.parent > a")
     private WebElement homeAndDecoLink;
 

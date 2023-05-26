@@ -17,7 +17,6 @@ public class ProductSearchPage extends BasePage {
     @FindBy(css = "button[title='Search']")
     private WebElement searchButton;
 
-
     @Step("Ingresando el producto a buscar")
     public ProductPage searchProduct (String product) {
         WebElement foundProduct = driver.findElement(By.linkText(product));

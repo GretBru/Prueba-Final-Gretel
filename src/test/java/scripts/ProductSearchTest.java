@@ -38,9 +38,7 @@ public class ProductSearchTest {
     public void testSearchProduct(String product) {
 
         HomePage homePage= new HomePage(driver);
-
         ProductSearchPage productSearchPage = homePage.searchProduct(product);
-
 
         //assertEquals(product,);
 

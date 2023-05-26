@@ -40,8 +40,10 @@ public class AddToCartTest {
 
         HomePage homePage = new HomePage(driver);
         HomeAndDecorPage homeAndDecorPage = homePage.selectCategory();
-        BookAndMusicPage bookAndMusicPage = homeAndDecorPage.selectSubCategory();
-        ProductPage productPage = bookAndMusicPage.selectProduct(product);
+        homeAndDecorPage.selectSubCategory();
+        BookAndMusicPage bookAndMusicPage = new BookAndMusicPage(driver);
+        bookAndMusicPage.selectProduct(product);
+        ProductPage productPage = new ProductPage(driver);
         productPage.selectBook();
         productPage.clickCheckBox();
         CartPage cartPage = productPage.addToCart();

@@ -34,7 +34,6 @@ public class LoginTest {
 
     public void loginTest(String email, String password)  {
         HomePage home= new HomePage(driver);
-
         LoginPage loginPage = home.clickLogIn();
         loginPage.login(email,password);
         loginPage.clickButton();
