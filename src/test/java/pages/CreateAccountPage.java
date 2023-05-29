@@ -38,9 +38,6 @@ public class CreateAccountPage extends BasePage {
     @FindBy(css = "#form-validate > div.buttons-set > button")
     private WebElement registerFinalButton;
 
-    @FindBy(css = "body > div > div.page > div.main-container.col1-layout > div > div > div > ul")
-    private WebElement errorMsg;
-
     @Step("Clic en el botón de Account.")
     public void ClickAccount() {
         accountButton.click();
@@ -68,6 +65,11 @@ public class CreateAccountPage extends BasePage {
     @Step("Click en el botón Registrarse para el registro del usuario.")
     public void registerFinalButton(){
         registerFinalButton.click();
+    }
+
+    public String accountAlreadyRegisteredMessage() {
+        WebElement errorMessage = driver.findElement(By.cssSelector(".error-msg span"));
+        return errorMessage.getText();
     }
 
 }

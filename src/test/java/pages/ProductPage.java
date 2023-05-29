@@ -12,16 +12,12 @@ public class ProductPage extends BasePage {
     @FindBy(css = "button[title='View Details']")
     private WebElement details;
 
-    @FindBy(css = "#downloadable-links-list > li > span > label")
+    @FindBy(css = "input[type='checkbox']")
     private WebElement checkToDownload;
 
-    @FindBy(xpath = "//button[@title='Add to Cart']")
+    @FindBy(css = ".add-to-cart-buttons button")
     private WebElement addToCartButton;
 
-    @Step("Se clikea en el libro ")
-    public void selectBook(){
-        details.click();
-    }
 
     @Step("Se clikea el checkBox ")
     public void clickCheckBox(){

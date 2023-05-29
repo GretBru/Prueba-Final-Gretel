@@ -35,19 +35,22 @@ public class AddToCartTest {
         driver.get(baseUrl);
     }
 
-    @Test(dataProvider = "products", dataProviderClass = dataProviders.ProductData.class)
-    public void AddToCartTest(String product) {
+    @Test(dataProvider = "product", dataProviderClass = dataProviders.ProductData.class)
+    public void AddToCartTest(String subCategory, String product) {
+        String homeDecoTitle = "HOME & DECOR";
+        String booksMusicTitle= "BOOKS & MUSIC";
+        String expectedTitle = "SHOPPING CART";
 
         HomePage homePage = new HomePage(driver);
-        HomeAndDecorPage homeAndDecorPage = homePage.selectCategory();
-        homeAndDecorPage.selectSubCategory();
-        BookAndMusicPage bookAndMusicPage = new BookAndMusicPage(driver);
-        bookAndMusicPage.selectProduct(product);
-        ProductPage productPage = new ProductPage(driver);
-        productPage.selectBook();
+        homePage.selectCategory();
+        HomeAndDecorPage homeAndDecorPage = new HomeAndDecorPage();
+        assertEquals(homeAndDecorPage.getCategoryTitle(), homeDecoTitle);
+        BookAndMusicPage bookAndMusicPage =  homeAndDecorPage.selectSubCategory();
+        assertEquals(bookAndMusicPage.getPageTitle(),booksMusicTitle);
+        ProductPage productPage = bookAndMusicPage.selectProduct(product);
         productPage.clickCheckBox();
-        CartPage cartPage = productPage.addToCart();
-        assertEquals(cartPage.getName(product), product);
+        CartPage cartPage =productPage.addToCart();
+        assertEquals(cartPage.CartPageTitle(),expectedTitle);
 
         takeScreenshot();
     }
@@ -62,6 +65,7 @@ public class AddToCartTest {
             System.out.println("Exception while closing the driver " + e.getMessage());
         }
     }
+
     @Attachment(type = "image/png")
     @AfterMethod(alwaysRun = true)
     public byte[] takeScreenshot() {

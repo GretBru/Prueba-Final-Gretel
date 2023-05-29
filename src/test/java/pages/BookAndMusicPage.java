@@ -12,11 +12,18 @@ public class BookAndMusicPage extends BasePage{
         super(driver);
     }
 
+    @FindBy(css = ".page-title h1")
+    private WebElement PageTitle;
+
+    @Step("Verificar titulo")
+    public String getPageTitle() {
+        return PageTitle.getText();
+    }
 
     @Step("Selecciono el producto")
     public ProductPage selectProduct(String product) {
-        WebElement productElement = driver.findElement(By.linkText(product));
-        productElement.click();
+        WebElement productSelect = driver.findElement(By.linkText(product));
+        productSelect.click();
         return new ProductPage(driver);
     }
 

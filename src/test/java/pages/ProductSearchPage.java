@@ -11,11 +11,19 @@ public class ProductSearchPage extends BasePage {
         super(driver);
     }
 
+    @FindBy(css = ".page-title h1")
+    private WebElement searchPageTitle;
+
      @FindBy(id="search")
     private WebElement searchInput;
 
     @FindBy(css = "button[title='Search']")
     private WebElement searchButton;
+
+    @Step("Obtener el titulo de la pagina")
+    public String getSearchTitle(String product) {
+        return searchPageTitle.getText();
+    }
 
     @Step("Ingresando el producto a buscar")
     public ProductPage searchProduct (String product) {

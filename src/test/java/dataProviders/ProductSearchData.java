@@ -9,6 +9,7 @@ public class ProductSearchData {
         return new Object[][]{
                 {"Glasses"},
                 {"Jean"},
+                {"Books"},
 
         };
     }

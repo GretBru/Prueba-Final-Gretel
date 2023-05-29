@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="languaje" verbose="1">
+    <test name="Languaje Test">
+        <classes>
+            <class name="scripts.LanguageTest"/>
+        </classes>
+    </test>
+</suite>

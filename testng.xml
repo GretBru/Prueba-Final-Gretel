@@ -1,13 +1,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Parametrized test Suite" verbose="1">
-    <test name="Parametrized Test 1">
-        <parameter name="currencyParam" value="USD" />
-        <parameter name="productParam" value="MacBook" />
-        <parameter name="priceParam" value="$602.00" />
-        <classes>
-            <class name="scripts.AddToCartTest"/>
-        </classes>
-    </test>
-
-
+<suite name="All suites">
+    <suite-files>
+        <suite-file path="src/test/java/suites/createAccount.xml"/>
+        <suite-file path="src/test/java/suites/login.xml"/>
+        <suite-file path="src/test/java/suites/languaje.xml"/>
+        <suite-file path="src/test/java/suites/search.xml"/>
+        <suite-file path="src/test/java/suites/addCart.xml"/>
+    </suite-files>
 </suite>

@@ -6,8 +6,8 @@ public class ProductData {
     @DataProvider(name = "product")
     public static Object[][] getProductsData() {
         return new Object[][]{
-                {"Alice in Wonderland"},
-                {"Love is an Eternal Lie by The Sleeping Tree"},
+                {"Books & Music","ALICE IN WONDERLAND"},
+                {"Books & Music", "LOVE IS AN ETERNAL LIE BY THE SLEEPING TREE"},
         };
     }
 }

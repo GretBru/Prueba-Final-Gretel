@@ -19,20 +19,18 @@ import java.time.Duration;
 public class LanguageTest {
     private WebDriver driver;
 
-    @BeforeClass
-    public void setUp(){
-        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
+    @BeforeTest
+    public void setUp() {
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
+
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         String baseUrl = "http://magento-demo.lexiconn.com/";
         driver.get(baseUrl);
     }
-
-
-
 
     @Test (dataProvider = "language", dataProviderClass = LanguageData.class)
     public void languageTest(String language,String assertLanguage) {
@@ -44,8 +42,18 @@ public class LanguageTest {
         Assert.assertEquals(upper,languageText);
 
     }
-    @Attachment(type = "image/png")
+    @AfterTest
+    public void tearDown() {
+        try {
+            if (driver != null) {
+                driver.quit();
+            }
+        } catch (Exception e) {
+            System.out.println("Exception while closing the driver " + e.getMessage());
+        }
+    }
 
+    @Attachment(type = "image/png")
     @AfterMethod(alwaysRun = true)
     public byte[] takeScreenshot() {
         byte[] image = new byte[0];
@@ -58,9 +66,4 @@ public class LanguageTest {
         }
         return image;
     }
-    @AfterTest
-    public void afterTest(){
-        driver.quit();
-    }
-
 }

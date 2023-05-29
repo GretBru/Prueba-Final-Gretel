@@ -37,11 +37,12 @@ public class ProductSearchTest {
     @Test(dataProvider = "productSearch", dataProviderClass = ProductSearchData.class)
     public void testSearchProduct(String product) {
 
+        String expectedTitle = "SEARCH RESULTS FOR '" + product.toUpperCase() + "'";
         HomePage homePage= new HomePage(driver);
         ProductSearchPage productSearchPage = homePage.searchProduct(product);
+        assertEquals(productSearchPage.getSearchTitle(product), expectedTitle);
 
-        //assertEquals(product,);
-
+        homePage.clearSearchBar();
 
         takeScreenshot();
     }
@@ -70,4 +71,3 @@ public class ProductSearchTest {
         return image;
     }
 }
-
